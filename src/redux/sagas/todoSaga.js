@@ -41,7 +41,7 @@ function* clearTodoListWorker(action) {
     console.log(data)
     yield data.forEach((todo) => {
         if (todo !== 'deleted') {
-            newData.push(todos.filter(todoItem => todoItem._id === todo.id.slice(0, -1))[0])
+            newData.push(todos.filter(todoItem => todoItem._id === todo.id)[0])
             throwErrorChannel.put(throwErrorMessage(todo.message))
         }
     })
@@ -83,7 +83,7 @@ async function updateTodo(data) {
 }
 
 async function clearTodoList(data) {
-    return await Promise.all(data.map((todo,i) => clearTodo(i%2===0?todo._id:`${todo._id}s`)))
+    return await Promise.all(data.map((todo,i) => clearTodo(todo._id)))
 }
 
 function clearTodo(id) {
