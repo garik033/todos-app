@@ -1,0 +1,224 @@
+$primaryColor: #858fd4;
+$mainColor:#444;
+$boxShadow: -6px -6px 16px rgba(255, 255, 255, 0.5), 6px 6px 16px rgba(#d1cdc7, 0.5);
+$boxShadowInset:inset -6px -6px 16px rgba(255, 255, 255, 0.5),inset 6px 6px 16px rgba(#d1cdc7, 0.5);
+$border: 1px solid rgba(#fff, 0.2);
+$borderRadius:7px;
+@font-face {
+  font-family: Cool-Font;
+  src: url(../fonts/BraindYerevan.otf);
+}
+
+body {
+  font-family: Cool-Font, sans-serif;
+  font-size: 18px;
+  color: #444444;
+  background: #dfdddd;
+}
+
+* {
+  outline: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f9f9f9;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $primaryColor;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border:$border;
+  box-shadow: $boxShadow;
+  background: #efeeee;
+  color: $primaryColor;
+  border-radius: $borderRadius;
+  &:hover {
+    box-shadow:$boxShadowInset
+  }
+}
+.danger{
+  color: #fc5f6d;
+}
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  width: 800px;
+  border:$border;
+  box-shadow:$boxShadow;
+  background: #efeeee;
+  border-radius: $borderRadius;
+  overflow: hidden;
+
+  ._title {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 0;
+    text-align: center;
+    border-radius: $borderRadius;
+    border:$border;
+    background: transparent;
+    box-shadow:$boxShadow;
+    color: $primaryColor;
+  }
+
+  ._actions {
+    width: 100%;
+    margin: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .add-todo{
+    background: #f1f1f1;
+    width: 100%;
+    padding: 2rem;
+    border-radius: $borderRadius;
+    box-shadow:$boxShadowInset;
+    margin-bottom: 2rem;
+    .input-block{
+      margin-bottom: 1rem;
+      input,textarea{
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        border-radius:$borderRadius;
+        border:$border;
+        background: transparent;
+        box-shadow:$boxShadow;
+        &:focus {
+          box-shadow: $boxShadowInset
+        }
+      }
+      small{
+        padding-left: 0.5rem;
+      }
+    }
+    ._action{
+      display: flex;
+      justify-content: flex-end;
+      > div {
+        cursor: pointer;
+
+
+        &:hover {
+          opacity: 0.7;
+        }
+
+        &._add {
+          color: $primaryColor;
+          margin-right: 1rem;
+        }
+
+      }
+    }
+    .color-pick{
+      display: flex;
+      margin-bottom: 1rem;
+      span{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        margin: 0.5rem;
+        border-radius: 50%;
+        border: 1px solid #ffffff;
+        box-shadow: $boxShadow;
+        cursor: pointer;
+        &:hover{
+          box-shadow:$boxShadowInset
+        }
+      }
+    }
+  }
+
+  ._todo-list {
+    background: #f1f1f1;
+    width: 100%;
+    padding: 2rem;
+    border-radius: $borderRadius;
+    box-shadow:$boxShadowInset;
+
+    ._item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      > div:not(._action) {
+        flex: 1;
+        padding: 1rem;
+        border-radius: $borderRadius;
+        border:$border;
+        background: transparent;
+        box-shadow: $boxShadow;
+      }
+
+      &:not(:first-child) {
+        margin-top: 1.5rem;
+      }
+
+      ._action {
+        flex: 0 1 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 0 1rem 1rem;
+
+        > div {
+          cursor: pointer;
+
+          &:hover {
+            opacity: 0.7;
+          }
+
+          &._todo-edit {
+            color: $primaryColor;
+            margin-right: 1rem;
+          }
+
+          &._todo-delete {
+            color: #fc5f6d;
+          }
+        }
+      }
+      h3 {
+        color: $mainColor;
+      }
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+// rotating loader
+.rotate{
+  animation: rotate 1s infinite linear;
+  transform-origin: center;
+}
+@keyframes rotate {
+  100%{transform: rotate(360deg)}
+}
