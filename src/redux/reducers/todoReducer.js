@@ -16,9 +16,11 @@ const todoReducer = (state = initialState, action) => {
             }
         //add created todo to list
         case ADD_TODO:
+            let newData=[...state.data]
+            newData.push(action.payload)
             return {
                 ...state,
-                data: [...state.data].push(action.payload),
+                data: newData,
                 added: true
             }
         // update edited todo to list
